@@ -59,7 +59,4 @@ process.on('SIGTERM', () => {
 });
 
 connect();
-require('./travlr');
-const Model = mongoose.model('trips')
-const data = (async() => await Model.find({}))();
-console.log(data)
+require('./models/travlr');
