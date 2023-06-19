@@ -23,6 +23,67 @@ const tripsList = async(req, res) => {
         });
 };
 
+const tripsAddTrip = async (req, res) => {
+    model
+    .create({
+        code: req.body.code,
+        name: req.body.name,
+        length: req.body.length,
+        start: req.body.start,
+        resort: req.body.resort,
+        perPerson: req.body.perPerson,
+        image: req.body.image,
+        description: req.body.description,
+    },
+    (err,trips) => { 
+        if(err){
+            return res
+                .status(400)
+                .json(err);
+        }else{
+            return res
+                .status(201)
+                .json(trip);
+        }
+    });
+}
+
+const tripsUpdateTrip = async (req, res) => {
+    console.log(req.body);
+    model
+        .findOneAndUpdate({ 'code': req.params.tripCode }, {
+            code: req.body.code,
+            name: req.body.name,
+            length: req.body.length,
+            start: req.body.start,
+            resort: req.body.resort,
+            perPerson: req.body.perPerson,
+            image: req.body.image,
+            description: req.body.description
+        }, { new: true })
+        .then(trip => {
+            if (!trip) {
+                return res
+                    .status(404)
+                    .send({
+                        message: "Trip not found with code " + req.params.tripCode
+                    });
+            }
+            res.send(trip);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res
+                    .status(404)
+                    .send({
+                        message: "Trip not found with code "+ req.params.tripCode
+                    });
+        }
+        return res
+            .status(500) // server error
+            .json(err);
+        });
+   }
+   
 
 //GET: /trips/:tripCode - return a single trip
 const tripsFindCode = async(req, res) => {
@@ -47,5 +108,7 @@ const tripsFindCode = async(req, res) => {
 
 module.exports = {
     tripsList,
-    tripsFindCode
+    tripsFindCode,
+    tripsAddTrip,
+    tripsUpdateTrip
 };
