@@ -2,11 +2,15 @@ const express = require('express');
 const router = express.Router();
 const tripsController = require('../controllers/trips');
 
-// Route: GET /trips
-router.get('/trips', tripsController.tripsList);
+router
+    .route('/trips')
+    .get(tripsController.tripList)
+    .post(tripsController.tripsAddTrip);
 
-// Route: GET /trips/:tripCode
-router.get('/trips/:tripCode', tripsController.tripsFindCode);
+router
+    .route('/trips/:tripCode')
+    .get(tripsController.tripsFindCode);
+    .put(tripsController.tripsUpdateTrip);
 
 // Export the router
 module.exports = router;
