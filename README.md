@@ -1,1 +1,7 @@
 # FullStack
+In the full stack project, Express HTML and JavaScript were used for traditional server-side rendering, while the single-page application (SPA) utilized client-side rendering with JavaScript frameworks with Angular, enabling dynamic updates without full page reloads.
+The backend utilized a NoSQL MongoDB database due to its flexible schema, scalability, and ability to handle large amounts of unstructured data efficiently.
+JSON is a data interchange format that is derived from JavaScript but is language-independent, and it serves as a common format for data exchange between the frontend and backend, allowing for seamless communication and interoperability between the two components of the application.
+In a full stack application, methods refer to the HTTP verbs used to interact with different endpoints of the backend API, and testing these endpoints involves verifying their functionality, data retrieval, and manipulation, while also addressing security challenges like authentication, authorization, and protecting against vulnerabilities like cross-site scripting.
+This course has given me a much more in depth look at web development and given me the tools nessecary to work on and design website.
+I have actually become comfortable enough in this course that I want to work on my own project/ personal website in the next few weeks to put to the test all that I have learned.
